@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ix8l0abvdcyv"]
+
+[ext_resource type="Script" path="res://scripts/camera_controllers/lerp_target_focus.gd" id="1_8k1a1"]
+
+[node name="LerpTargetFocusCamera" type="Camera3D"]
+script = ExtResource("1_8k1a1")

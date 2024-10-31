@@ -27,11 +27,11 @@ extends MeshInstance3D
 		amplitude = value
 		_generate_terrain()
 
-@export var noise:FastNoiseLite
+@export var noise: FastNoiseLite
 
-var _ready_to_generate = false
-var _mdt:MeshDataTool = MeshDataTool.new()
-var _plane_mesh:PlaneMesh = PlaneMesh.new()
+var _ready_to_generate: bool = false
+var _mdt: MeshDataTool = MeshDataTool.new()
+var _plane_mesh: PlaneMesh = PlaneMesh.new()
 
 func _ready():
 	_ready_to_generate = true
@@ -75,7 +75,7 @@ func move_vertex_below_position(pos:Vector3, delta:float = 10.0) -> void:
 			closest = v
 			closest_index = i
 	
-	closest.y += delta
+	closest.y += delta * 2
 	_mdt.set_vertex(closest_index, closest)
 	
 	mesh.clear_surfaces() 

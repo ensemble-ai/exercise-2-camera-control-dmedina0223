@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dtm13sp1jsrwi"]
 
-[ext_resource type="Script" path="res://scripts/vessel.gd" id="1_gvlq5"]
+[ext_resource type="Script" path="res://scripts/camera_controllers/vessel.gd" id="1_gvlq5"]
 [ext_resource type="AudioStream" uid="uid://dawegxxwk8pqb" path="res://assets/audio/LASRBeam_Plasma Loop_01.wav" id="3_6xqm4"]
 [ext_resource type="AudioStream" uid="uid://df4yj8byubv05" path="res://assets/audio/EXPLDsgn_Explosion Rumble Distorted_01.wav" id="4_0msye"]
 [ext_resource type="Script" path="res://scripts/util/gpu_particle_fix.gd" id="4_y1eh5"]

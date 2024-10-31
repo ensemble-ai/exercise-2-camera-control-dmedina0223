@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b43qeioyn8o65"]
+
+[ext_resource type="Script" path="res://scripts/camera_controllers/position_lerp.gd" id="1_o6qx6"]
+
+[node name="PositionLerpCamera" type="Camera3D"]
+script = ExtResource("1_o6qx6")

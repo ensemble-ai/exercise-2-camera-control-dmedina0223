@@ -2,7 +2,7 @@ class_name PostionLock
 extends CameraControllerBase
 
 
-@export var floating_offset:Vector3 = Vector3.ZERO
+@export var floating_offset := Vector3.ZERO
 @export var crosshair_length:float = 5
 
 

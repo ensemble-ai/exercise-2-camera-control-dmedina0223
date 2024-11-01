@@ -24,18 +24,15 @@ func _process(delta: float) -> void:
 		draw_logic()
 	
 	var direction_to_target: Vector3 = (target.global_position - global_position).normalized()
-	print(timer, " ", delta)
 	if timer > 0:
 		timer -= delta
-		print(timer, " ", delta)
-
 
 	if not target.velocity.is_zero_approx() and not target.hyperspeed_active:
-		var lead_position = target.global_position + (target.velocity.normalized() * leash_distance)
+		var lead_position: Vector3 = target.global_position + (target.velocity.normalized() * leash_distance)
 		global_position = global_position.lerp(lead_position, lead_speed * delta)
 		timer = catchup_delay_duration
 	elif not target.velocity.is_zero_approx() and target.hyperspeed_active:
-		var lead_position = target.global_position + (target.velocity.normalized() * leash_distance * 1.5)
+		var lead_position: Vector3 = target.global_position + (target.velocity.normalized() * leash_distance * 1.5)
 		global_position = global_position.lerp(lead_position, hyper_lead_speed * delta)
 		timer = catchup_delay_duration
 	elif target.velocity == Vector3.ZERO and timer <= 0:

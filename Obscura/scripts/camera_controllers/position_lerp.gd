@@ -20,31 +20,6 @@ func _process(delta: float) -> void:
 	if draw_camera_logic:
 		draw_logic()
 	
-	#var direction_to_target: Vector3 = (target.global_position - global_position).normalized()
-	#if target.hyperspeed_active:
-		#leash_distance *= 2
-	#if global_position.distance_to(target.global_position) > leash_distance:
-		#global_position = target.global_position - direction_to_target * leash_distance
-		#
-	#var target_position:Vector3 = target.position
-	#var speed = 0.0
-	#
-	#if target.velocity != Vector3.ZERO:
-		#if target.hyperspeed_active:
-			#speed = hyper_follow_speed * 10
-		#else:
-			#speed = follow_speed * 70
-	#else:
-		#speed = catchup_speed * 50
-		#
-	#var distance = position.distance_to(target_position)
-	#var move_step = speed * delta
-	#
-	#if move_step < distance:
-		#position += direction_to_target * move_step
-	#else:
-		#position = target_position
-
 	var direction_to_target: Vector3 = (target.global_position - global_position).normalized()
 	
 	var leash: float = leash_distance

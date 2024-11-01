@@ -2,10 +2,11 @@ class_name LerpTargetFocus
 extends CameraControllerBase
 
 
-@export var crosshair_length: float = 5
-@export var lead_speed: float = 11.0
+@export var crosshair_length: float = 5.0
+@export var lead_speed: float = 3.0
+@export var hyper_lead_speed: float = 10.0
 @export var catchup_speed: float = 5.0
-@export var leash_distance: float = 10.0
+@export var leash_distance: float = 30.0
 @export var catchup_delay_duration: float = 1.0
 
 var timer: float = 0.0
@@ -23,19 +24,19 @@ func _process(delta: float) -> void:
 		draw_logic()
 	
 	var direction_to_target: Vector3 = (target.global_position - global_position).normalized()
-	
+	print(timer, " ", delta)
 	if timer > 0:
 		timer -= delta
-	
-	if global_position.distance_to(target.global_position) > leash_distance:
-		# Position the camera ahead of the target, along its velocity direction
+		print(timer, " ", delta)
+
+
+	if not target.velocity.is_zero_approx() and not target.hyperspeed_active:
 		var lead_position = target.global_position + (target.velocity.normalized() * leash_distance)
 		global_position = global_position.lerp(lead_position, lead_speed * delta)
 		timer = catchup_delay_duration
-	
-	elif target.velocity != Vector3.ZERO:
-		var lead_position = target.global_position + (target.velocity.normalized() * leash_distance)
-		global_position = global_position.lerp(lead_position, lead_speed * delta)
+	elif not target.velocity.is_zero_approx() and target.hyperspeed_active:
+		var lead_position = target.global_position + (target.velocity.normalized() * leash_distance * 1.5)
+		global_position = global_position.lerp(lead_position, hyper_lead_speed * delta)
 		timer = catchup_delay_duration
 	elif target.velocity == Vector3.ZERO and timer <= 0:
 		global_position = global_position.lerp(target.global_position, catchup_speed * delta)

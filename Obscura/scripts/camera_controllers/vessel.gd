@@ -1,8 +1,6 @@
 class_name Vessel
 extends CharacterBody3D
 
-@export var terrforming_power: float = 1.0
-@export var terrain_manager: TerrainManager
 
 const RADIUS: float = 0.5
 const HEIGHT: float = RADIUS * 2.0
@@ -11,14 +9,22 @@ const WIDTH: float = RADIUS * 2.0
 const BASE_SPEED = 50
 const HYPER_SPEED = 300
 
+@export var terrforming_power: float = 1.0
+@export var terrain_manager: TerrainManager
+
+# used for lgogic in lerp cameras
+var hyperspeed_active = false
+
 func _physics_process(_delta):
-	
 	var speed = BASE_SPEED
+	
+	hyperspeed_active = false
 	$ParticleTrail.visible = false 
 	if Input.is_action_pressed("ui_accept"):
 		_play($Audio/HyperSpeed)
 		speed = HYPER_SPEED
 		$ParticleTrail.visible = true
+		hyperspeed_active = true
 
 	if Input.is_action_just_pressed("raise_terrain"):
 		_play($Audio/Terraforming)
@@ -27,7 +33,6 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("lower_terrain"):
 		_play($Audio/Terraforming)
 		terrain_manager.move_vertex_below_position(global_position, -terrforming_power)
-
 	
 	var input_dir = Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),

@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 
 	if draw_camera_logic:
 		draw_logic()
-		
+	
 	position = target.position + floating_offset
 	super(delta)
 
@@ -32,17 +32,15 @@ func draw_logic() -> void:
 	
 	var horizontal:float = -crosshair_length
 	var vertical:float = crosshair_length
-
 	
 	immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
 	immediate_mesh.surface_add_vertex(Vector3(vertical, 0, 0))
 	immediate_mesh.surface_add_vertex(Vector3(-vertical, 0, 0))
 	immediate_mesh.surface_add_vertex(Vector3(0, 0, horizontal))
 	immediate_mesh.surface_add_vertex(Vector3(0, 0, -horizontal))
-
-
+	
 	immediate_mesh.surface_end()
-
+	
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	material.albedo_color = Color.BLACK
 	

@@ -1,10 +1,11 @@
-class_name Auto_Scroll
+class_name AutoScroll
 extends CameraControllerBase
 
 
-@export var top_left: Vector2 = Vector2(-10, -8)
-@export var bottom_right: Vector2 = Vector2(10, 8)
-@export var autoscroll_speed: Vector3 = Vector3(-0.1, 0.0, 0.0)
+@export var top_left := Vector2(-10, -8)
+@export var bottom_right := Vector2(10, 8)
+@export var autoscroll_speed := Vector3(-0.1, 0.0, 0.0)
+
 
 func _ready() -> void:
 	super()
@@ -23,22 +24,22 @@ func _process(delta: float) -> void:
 	
 	#left boundary
 	if (target.position.x - target.WIDTH / 2.0) < position.x + top_left.x:
-		print("hit left boundary")
+		#print("hit left boundary")
 		target.position.x = position.x + top_left.x + target.WIDTH / 2.0
 	
 	#right boundary
 	if (target.position.x + target.WIDTH / 2.0) > position.x + bottom_right.x:
-		print("hit right boundary")
+		#print("hit right boundary")
 		target.position.x = position.x + bottom_right.x - target.WIDTH / 2.0
 	
 	#top boundary
 	if (target.position.z - target.HEIGHT / 2.0) < position.z + top_left.y:
-		print("hit top boundary")
+		#print("hit top boundary")
 		target.position.z = position.z + top_left.y + target.HEIGHT / 2.0
 	
 	#bottom boundary
 	if (target.position.z + target.HEIGHT / 2.0) > position.z + bottom_right.y:
-		print("hit bottom boundary")
+		#print("hit bottom boundary")
 		target.position.z = position.z + bottom_right.y - target.HEIGHT / 2.0
 	
 	super(delta)
